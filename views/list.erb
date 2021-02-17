@@ -1,5 +1,10 @@
 <ul>
   <% @bookmark.all.each do |website| %>
-    <li><%= website %></li>
+    <li><a href=<%= website %>><%= website %></a></li>
   <% end %>
 </ul>
+
+<form action="/bookmarks" method="post">
+  <input placeholder="url" type="text" name="url">
+  <input type="submit" value="Submit">
+</form>
