@@ -1,9 +1,12 @@
 require 'bookmark'
 
 describe Bookmark do
-  describe '#all' do
+  describe '.all' do
     it 'returns a list of bookmarks' do
-      expect(subject.bookmark_list).to eq(['google.co.uk', 'youtube.com', 'github.com'])
+      bookmarks = Bookmark.all
+
+      expect(bookmarks).to include "https://www.google.co.uk"
+      expect(bookmarks).to include "https://destroyallsoftware.com"
     end
   end
 end
