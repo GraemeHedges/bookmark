@@ -5,13 +5,13 @@ describe Bookmark do
     it 'returns a list of bookmarks' do
       connection = PG.connect(dbname: 'bookmark_manager_test')
 
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('https://www.google.co.uk');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('https://destroyallsoftware.com');")
+      Bookmark.add("http://www.google.com")
+      Bookmark.add("http://destroyallsoftware.com") 
 
       bookmarks = Bookmark.all
 
-      expect(bookmarks).to include "https://www.google.co.uk"
-      expect(bookmarks).to include "https://destroyallsoftware.com"
+      expect(bookmarks).to include "http://www.google.com"
+      expect(bookmarks).to include "http://destroyallsoftware.com"
     end
   end
 end
