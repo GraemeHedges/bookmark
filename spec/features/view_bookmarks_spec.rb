@@ -1,12 +1,12 @@
 feature 'viewing bookmarks' do
   scenario 'user visits /bookmarks and can see list of bookmarks' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
 
-    Bookmark.add(url: 'http://www.google.com')
-    Bookmark.add(url: 'http://destroyallsoftware.com')
+    Bookmark.add(url: 'http://www.google.com', title: 'Google')
+    Bookmark.add(url: 'http://destroyallsoftware.com', title: 'Destroy All Software')
 
     visit '/bookmarks'
-    expect(page).to have_content('http://www.google.com')
-    expect(page).to have_content('http://destroyallsoftware.com')
+
+    expect(page).to have_link('Google', href: 'http://www.google.com')
+    expect(page).to have_link('Destroy All Software', href: 'http://destroyallsoftware.com')
   end
 end

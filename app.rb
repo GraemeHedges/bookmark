@@ -2,10 +2,9 @@ require 'sinatra/base'
 require_relative './lib/bookmark'
 
 class BookmarkManager < Sinatra::Base
-  enable :sessions
 
   get '/' do
-    'Hello, world!'
+    redirect '/bookmarks'
   end
 
   get '/bookmarks' do
@@ -14,7 +13,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    Bookmark.add(url: params[:url])
+    Bookmark.add(url: params[:url], title: params[:title])
     redirect '/bookmarks'
   end
 
