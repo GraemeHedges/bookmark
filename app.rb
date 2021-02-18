@@ -2,7 +2,6 @@ require 'sinatra/base'
 require_relative './lib/bookmark'
 
 class BookmarkManager < Sinatra::Base
-
   enable :sessions
 
   get '/' do
@@ -19,5 +18,5 @@ class BookmarkManager < Sinatra::Base
     redirect '/bookmarks'
   end
 
-  run! if app_file == $0
+  run! if app_file == $PROGRAM_NAME
 end

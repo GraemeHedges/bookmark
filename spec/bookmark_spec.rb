@@ -3,15 +3,15 @@ require 'bookmark'
 describe Bookmark do
   describe '.all' do
     it 'returns a list of bookmarks' do
-      connection = PG.connect(dbname: 'bookmark_manager_test')
+      PG.connect(dbname: 'bookmark_manager_test')
 
-      Bookmark.add(url: "http://www.google.com")
-      Bookmark.add(url: "http://destroyallsoftware.com") 
+      Bookmark.add(url: 'http://www.google.com')
+      Bookmark.add(url: 'http://destroyallsoftware.com')
 
       bookmarks = Bookmark.all
 
-      expect(bookmarks).to include "http://www.google.com"
-      expect(bookmarks).to include "http://destroyallsoftware.com"
+      expect(bookmarks).to include 'http://www.google.com'
+      expect(bookmarks).to include 'http://destroyallsoftware.com'
     end
   end
 
